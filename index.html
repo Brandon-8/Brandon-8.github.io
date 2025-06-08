@@ -52,7 +52,7 @@
     <hr>
     <ul>
 
-        {% if activePage == "info" %}
+        {% if page.url == "/" %}
         <li><a class="active" href="{{url_for('home')}}">Library Info</a></li>
         {% else %}
         <li><a href="{{url_for('home')}}">Library Info</a></li>
@@ -64,37 +64,10 @@
         <li><a href="{{url_for('search')}}">Search</a></li>
         {% endif %}
 
-        {% if loginVal %}
-            {% if activePage == "account" %}
-            <li><a class="active" href="{{url_for('account')}}">My Account</a></li>
-            {% else %}
-            <li><a href="{{url_for('account')}}">My Account</a></li>
-            {% endif %}
-        {% else %}
-        <li><a href="{{url_for('login')}}">My Account</a></li>
-        {% endif %}
 
-        {% if loginVal %}
-            {% if activePage == "login" %}
-            <li class="active" style="float:right"><a href="{{url_for('login')}}">Log Out</a></li>
-            {% else %}
-            <li style="float:right"><a href="{{url_for('login')}}">Log Out</a></li>
-            {% endif %}
-        {% else %}
-            {% if activePage == "login" %}
-            <li class="active" style="float:right"><a href="{{url_for('login')}}">Log In</a></li>
-            {% else %}
-            <li style="float:right"><a href="{{url_for('login')}}">Log In</a></li>
-            {% endif %}
-        {% endif %}
     </ul>
     <hr>
-    <div>
-        <!--Dispaly flash messages-->
-        {% for message in get_flashed_messages() %}
-            <div class="alert">{{ message }}</div>
-        {% endfor %}
-    </div>
+
 
     <div class="home">
         {% block home %} {% endblock %}
