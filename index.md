@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My Portfolio
+title: Brandon Luton
 ---
 
 ## Welcome
@@ -10,6 +10,11 @@ I'm a student/developer with interests in:
 - Computer Science (Python, ML, Web Dev)
 - GIS (ArcGIS, QGIS, Spatial Analysis)
 
+## 📚 Portfolio Sections
+
+- [Computer Science Projects](cs.html)
+- [GIS Projects](gis.html)
+- 
 ## 📂 Projects
 
 ### 💻 Computer Science
