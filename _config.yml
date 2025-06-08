@@ -4,3 +4,9 @@ plugins:
 
 title: My Portfolio
 description: A mix of Computer Science and GIS Projects
+
+navigation:
+  Home: /
+  Computer Science: /cs.html
+  GIS Projects: /gis.html
+  Resume: /resume.pdf
