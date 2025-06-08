@@ -2,7 +2,12 @@
 layout: default
 title: Brandon Luton
 ---
+## 🧭 Navigation
 
+- [Home](index.html)
+- [Computer Science Projects](cs.html)
+- [GIS Projects](gis.html)
+- 
 ## Welcome
 
 I'm a student/developer with interests in:
