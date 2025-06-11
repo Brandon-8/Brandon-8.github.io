@@ -1,0 +1,151 @@
+<!-- Overall layout seen on all pages (titles and links to other pages)-->
+<!--Navigation Bar taken from: https://www.w3schools.com/csS/css_navbar_horizontal.asp-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Brandon Luton</title>
+        <style>  
+            .head {text-align: center;}
+            .header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #222;
+              color: white;
+              z-index: 1000;
+              padding: 10px 20px;
+              box-sizing: border-box;
+            }
+
+            .header h1 {
+              margin: 0;
+              font-size: 40px;
+              padding-bottom: 10px;
+              
+            }
+            
+            .alert {
+                padding: 20px;
+                margin: 5px;
+                color: #970020;
+                background-color: #ffd5de;
+            }
+    
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 5px;
+                overflow: hidden;
+                background-color: #333;
+                display: flex;
+                top: 0;
+                width: 100%;
+            }
+    
+            li {float: left;}
+    
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            li a:hover:not(.active) {background-color: #2980b9;}       
+            
+            .active {background-color: #2980b9;}
+    
+            li a:hover {background-color: #2980b9;}
+            .content {
+              margin-top: 145px; /* Adjust this based on your header height */
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+          #body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+        </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>Brandon Luton</h1>
+      
+        <hr>
+        <ul id="navbar">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pages/cs.html">CS Projects</a></li>
+          <li><a href="/pages/gis.html">GIS Projects</a></li>
+          <li><a href="/pages/resume.html">Resume</a></li>
+        </ul>
+        <hr>
+      </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const base = "".replace(/\/$/, ""); // remove trailing slash if present
+              const path = window.location.pathname.replace(base, "").replace(/\/$/, "").toLowerCase(); // normalize
+          
+              document.querySelectorAll("#navbar a").forEach(link => {
+                const href = link.getAttribute("href").replace(base, "").replace(/\/$/, "").toLowerCase();
+                if (path === href) {
+                  link.classList.add("active");
+                }
+              });
+            });
+          </script>
+    </body>
+  <main>
+    <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
+<style>
+
+
+  .sidebar {
+    position: fixed;
+    top: 170px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 200px); /* full height of the viewport */
+    background-color: #222; /*#136a13 */
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .sidebar a:hover {
+    background-color: #2980b9;
+  }
+
+  .content {
+    margin-left: 200px; /* same as sidebar width */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+</style>
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#vulnerable">Biodiversity of NE Atlantic</a>
+  <a href="#protection">Proposed Conservation Sites</a>
+  <a href="#compare">Lace Coral vs. Generic Sponge Probability</a>
+  <a href="#rplot">ROC Curve for each Species</a>
+</div>
+
+<div class="content">
+    <h1>Proposition of New Protected Areas of the Northeast Atlantic Ocean Maps</h1>
+    <img id='vulnerable' src="../../assets/maps/a2_map1.png" alt="Vulnerable Marine Ecosystems"/>
+    <img id='protection' src="../../assets/maps/a2_map2.png" alt="Proposed Areas for Protection"/>
+    <img id='compare' src="../../assets/maps/fig2.png" alt="Lace Coral vs. Generic Sponge Probability"/>
+    <img id='rplot' src="../../assets/maps/Rplot.png" alt="ROC Curve for each Species"/>
+</div>
+  </main>

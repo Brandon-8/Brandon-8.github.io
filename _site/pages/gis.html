@@ -1,0 +1,192 @@
+<!-- Overall layout seen on all pages (titles and links to other pages)-->
+<!--Navigation Bar taken from: https://www.w3schools.com/csS/css_navbar_horizontal.asp-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Brandon Luton</title>
+        <style>  
+            .head {text-align: center;}
+            .header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #222;
+              color: white;
+              z-index: 1000;
+              padding: 10px 20px;
+              box-sizing: border-box;
+            }
+
+            .header h1 {
+              margin: 0;
+              font-size: 40px;
+              padding-bottom: 10px;
+              
+            }
+            
+            .alert {
+                padding: 20px;
+                margin: 5px;
+                color: #970020;
+                background-color: #ffd5de;
+            }
+    
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 5px;
+                overflow: hidden;
+                background-color: #333;
+                display: flex;
+                top: 0;
+                width: 100%;
+            }
+    
+            li {float: left;}
+    
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            li a:hover:not(.active) {background-color: #2980b9;}       
+            
+            .active {background-color: #2980b9;}
+    
+            li a:hover {background-color: #2980b9;}
+            .content {
+              margin-top: 145px; /* Adjust this based on your header height */
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+          #body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+        </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>Brandon Luton</h1>
+      
+        <hr>
+        <ul id="navbar">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pages/cs.html">CS Projects</a></li>
+          <li><a href="/pages/gis.html">GIS Projects</a></li>
+          <li><a href="/pages/resume.html">Resume</a></li>
+        </ul>
+        <hr>
+      </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const base = "".replace(/\/$/, ""); // remove trailing slash if present
+              const path = window.location.pathname.replace(base, "").replace(/\/$/, "").toLowerCase(); // normalize
+          
+              document.querySelectorAll("#navbar a").forEach(link => {
+                const href = link.getAttribute("href").replace(base, "").replace(/\/$/, "").toLowerCase();
+                if (path === href) {
+                  link.classList.add("active");
+                }
+              });
+            });
+          </script>
+    </body>
+  <main>
+    <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
+<style>
+
+
+  .sidebar {
+    position: fixed;
+    top: 170px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 200px); /* full height of the viewport */
+    background-color: #222; /*#136a13 */
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .sidebar a:hover {
+    background-color: #2980b9;
+  }
+
+  .content {
+    margin-left: 200px; /* same as sidebar width */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+</style>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#intro">Introduction</a>
+  <a href="#nrv">New River Valley Regional Analysis</a>
+  <a href="#protected">New Protected Areas of the Northeast Atlantic Ocean</a>
+  <a href="#coral">Cold-water Coral Restoration</a>
+  <a href="#ges_286">Exploring the Environment: A Geo-Spatial Perspective</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+    <div id="intro">
+    <h1>Introduction</h1>
+		<p>
+   			Here are a variety of GIS-related school projects. Unless specified, QGIS was used. To see the 
+			GIS Maps at a larger scale click the 'GIS Maps' link under the heading.
+   		</p>
+    </div>
+
+	<div id="nrv">
+    <h1>New River Valley Regional Analysis</h1>
+    	<p>
+			<a href="gis/nrv.html">GIS Maps</a>
+			<embed src="/assets/pdfs/nrv.pdf" type="application/pdf" width="100%" height="600px">		
+    	</p>
+    </div>
+
+    <div id="protected">
+    <h1>Proposition of New Protected Areas of the Northeast Atlantic Ocean</h1>
+    	<p>
+			<a href="gis/protected_areas.html">GIS Maps</a>
+			<embed src="/assets/pdfs/ti311_report_2.pdf" type="application/pdf" width="100%" height="600px">
+		</p>
+    </div>
+	
+	<div id="coral">
+    <h1>Cold-water Coral Restoration</h1>
+    	<p>
+			<a href="gis/coral.html">GIS Maps</a>
+			<embed src="/assets/pdfs/ti311_report.pdf" type="application/pdf" width="100%" height="600px">		
+    	</p>
+    </div>
+	<div id="ges_286">
+
+    <h1>Exploring the Environment: A Geo-Spatial Perspective</h1>
+    	<p>
+			This Undergrad class had half of the course focused on field work and the 
+			other half on GIS analysis using ArcGIS Pro. Much of the field work ulitized ArcGIS Field Maps.
+			A variety of different topics were covered in the class. Layouts from this class can be found at
+			the link below.<br>
+			<a href="gis/ges_286.html">GIS Maps</a>	
+    	</p>
+    </div>	
+
+</div>
+  </main>

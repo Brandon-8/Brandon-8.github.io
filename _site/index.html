@@ -1,0 +1,179 @@
+<!-- Overall layout seen on all pages (titles and links to other pages)-->
+<!--Navigation Bar taken from: https://www.w3schools.com/csS/css_navbar_horizontal.asp-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Brandon Luton</title>
+        <style>  
+            .head {text-align: center;}
+            .header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #222;
+              color: white;
+              z-index: 1000;
+              padding: 10px 20px;
+              box-sizing: border-box;
+            }
+
+            .header h1 {
+              margin: 0;
+              font-size: 40px;
+              padding-bottom: 10px;
+              
+            }
+            
+            .alert {
+                padding: 20px;
+                margin: 5px;
+                color: #970020;
+                background-color: #ffd5de;
+            }
+    
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 5px;
+                overflow: hidden;
+                background-color: #333;
+                display: flex;
+                top: 0;
+                width: 100%;
+            }
+    
+            li {float: left;}
+    
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            li a:hover:not(.active) {background-color: #2980b9;}       
+            
+            .active {background-color: #2980b9;}
+    
+            li a:hover {background-color: #2980b9;}
+            .content {
+              margin-top: 145px; /* Adjust this based on your header height */
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+          #body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+        </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>Brandon Luton</h1>
+      
+        <hr>
+        <ul id="navbar">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pages/cs.html">CS Projects</a></li>
+          <li><a href="/pages/gis.html">GIS Projects</a></li>
+          <li><a href="/pages/resume.html">Resume</a></li>
+        </ul>
+        <hr>
+      </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const base = "".replace(/\/$/, ""); // remove trailing slash if present
+              const path = window.location.pathname.replace(base, "").replace(/\/$/, "").toLowerCase(); // normalize
+          
+              document.querySelectorAll("#navbar a").forEach(link => {
+                const href = link.getAttribute("href").replace(base, "").replace(/\/$/, "").toLowerCase();
+                if (path === href) {
+                  link.classList.add("active");
+                }
+              });
+            });
+          </script>
+    </body>
+  <main>
+    <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
+<style>
+
+
+  .sidebar {
+    position: fixed;
+    top: 170px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 200px); /* full height of the viewport */
+    background-color: #222; /*#136a13 */
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .sidebar a:hover {
+    background-color: #2980b9;
+  }
+
+  .content {
+    margin-left: 200px; /* same as sidebar width */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+</style>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="https://www.google.com/maps/place/Blacksburg,+VA/@37.2304119,-80.4299364,20608m/data=!3m2!1e3!4b1!4m6!3m5!1s0x884d950adc06dcc3:0x86ceb8ea4842da2d!8m2!3d37.2300668!4d-80.4150745!16zL20vMDEwbjg5?entry=ttu&g_ep=EgoyMDI1MDYwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#007BFF" viewBox="0 0 24 24" style="vertical-align: middle;">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+    </svg> Blacksburg, VA
+  </a>
+
+  <a href="mailto:brandonluton8@gmail.com" target="_blank" rel="noopener noreferrer">📧 Email</a>
+
+  <a href="https://github.com/Brandon-8" target="_blank" rel="noopener noreferrer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#F0F6FC" viewBox="0 0 24 24" style="vertical-align: middle;">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.087-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.334-5.466-5.931 
+        0-1.31.468-2.381 1.235-3.221-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.911 1.23 3.221 0 4.609-2.805 5.625-5.475 5.921.429.369.81 1.096.81 2.215 0 1.6-.015 2.888-.015 3.286 0 .315.21.694.825.576 4.765-1.585 8.2-6.082 8.2-11.385 0-6.627-5.373-12-12-12z"/>
+    </svg>
+    GitHub
+  </a>
+
+  <a href="https://www.linkedin.com/in/brandon-l-0252b830a/" target="_blank" rel="noopener noreferrer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 34 34" style="transform: scale(0.7); vertical-align: middle;">
+    <g>
+        <rect fill="#0A66C2" x="0" y="0" width="34" height="34" rx="4"></rect>
+        <path d="M8 12h3v12H8V12zm1.5-4a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM14 12h3v1.561h.043c.417-.79 1.438-1.622 2.957-1.622 3.161 0 3.75 2.083 3.75 4.788V24h-3v-6.173c0-1.47-.027-3.361-2.048-3.361-2.048 0-2.362 1.599-2.362 3.252V24h-3V12z" fill="#FFFFFF"></path>
+    </g>
+    </svg>
+
+    LinkedIn
+  </a>
+</div>
+
+<div class="content">
+<h1>Brandon Luton</h1>
+<p>
+    I am currently a Master's student at 
+    <a href='https://www.vt.edu' target="_blank" rel="noopener noreferrer">Virginia Tech.</a>
+    I recieved a B.S. in Computer Science from the 
+    <a href='https://www.vt.edu' target="_blank" rel="noopener noreferrer">University of Maryland, Baltimore County (UMBC)</a>
+    <br>Write some stuff here
+</p>
+</div>
+
+
+  </main>

@@ -1,0 +1,88 @@
+---
+layout: default
+title: Computer Science Projects
+---
+
+{% include sidebar.html %}
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#intro">Introduction</a>
+  <a href="#shift">Shift Cipher</a>
+  <a href="#vigenere">Vigenere Cipher</a>
+  <a href="#substitution">Substitution Cipher</a>
+  <a href="#affine">Affine Cipher</a>
+</div>
+
+<div class="content">
+  <div id="intro">
+    <h1>Introduction</h1>
+    <p>
+      Implementation of various ciphers in Python that were covered in an Undergrad Cryptography class.
+      Shift Ciphers, Vigenere Ciphers, Substitution Ciphers, and Affine Ciphers are implemented. Note:
+      the assumption is that messages are using a standard English alphabet.
+      <br><br><b>Tools:</b> Python, numpy
+      <br><a href="https://github.com/Brandon-8/cryptography" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </p>
+  <div id="shift">
+    <h1>Shift Cipher</h1>
+    <p>
+      A Shift Cipher is a basic cipher that shifts all letters in the message by certain value (called the key)
+      to a subsequent letter in the alphabet. The Caesar Cipher is the case where the key is 3.
+      <br><br>
+      In addition to basic functions to encrypt and decrpyt a given messages, using the key value, there are 
+      to methods to crack a Shift cipher when the key value is unknown. The first is a brute force approach where
+      every possible key (0-25 in the case of standard alphabet) is tested on the encrypted message. All the 
+      potential decrypted messages are compared to a U.S. dictionary to see how closely it aligns with the English language
+      The most likely candidates for the decrypted message are returned to the user. 
+      <br><br>
+      The code for this is shown below.
+    </p>
+    <pre><code>
+      def shift_crack_brute_force(self, ciphertext, valid_percent, one_result=False):
+              possible_decrpyt = [] # may be possible to get more than one potential plaintext
+              length = len(self.alphabet)
+              # Brute Force by checking every possible shift value
+              for ii in range(length):
+                  self.set_key(ii)
+                  poss = self.decrypt(ciphertext)
+
+                  if poss == None:
+                      return None
+                  
+                  # check if the decrypted text is english
+                  valid = check_text(poss)
+                  res = {'Plaintext': poss, 'Shift Value': ii, 'Valid': valid}
+                  if one_result and valid >= valid_percent:
+                      return res
+                  possible_decrpyt.append(res)  
+              
+              self.set_key(None)
+              return possible_decrpyt
+    </pre></code>
+    <p>
+      The second method to crack a Shift Cipher is by leveraging letter frequencies. The most common
+      letter in the English language is the letter 'e'. Knowing this, given an encrypted message that is 
+      sufficiently long, the most freqent letter in the encrypted message likely maps to the letter 'e' (or
+      another high frequency letter) and thus the key value can be determined.
+    </p>
+  </div>
+  <div id="vigenere">
+    <h1>Vigenere Cipher</h1>
+    <p>
+      Vigenere Cipher
+    </p>
+  </div>
+  <div id="substitution">
+  <h1>Substitution Cipher</h1>
+  <p>
+    Substitution Cipher
+  </p>
+  </div>
+  <div id="affine">
+  <h1>Affine Cipher</h1>
+  <p>
+    Affine Cipher
+  </p>
+  </div>
+
+</div>

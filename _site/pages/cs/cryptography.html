@@ -1,0 +1,218 @@
+<!-- Overall layout seen on all pages (titles and links to other pages)-->
+<!--Navigation Bar taken from: https://www.w3schools.com/csS/css_navbar_horizontal.asp-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Brandon Luton</title>
+        <style>  
+            .head {text-align: center;}
+            .header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              background-color: #222;
+              color: white;
+              z-index: 1000;
+              padding: 10px 20px;
+              box-sizing: border-box;
+            }
+
+            .header h1 {
+              margin: 0;
+              font-size: 40px;
+              padding-bottom: 10px;
+              
+            }
+            
+            .alert {
+                padding: 20px;
+                margin: 5px;
+                color: #970020;
+                background-color: #ffd5de;
+            }
+    
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 5px;
+                overflow: hidden;
+                background-color: #333;
+                display: flex;
+                top: 0;
+                width: 100%;
+            }
+    
+            li {float: left;}
+    
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+    
+            li a:hover:not(.active) {background-color: #2980b9;}       
+            
+            .active {background-color: #2980b9;}
+    
+            li a:hover {background-color: #2980b9;}
+            .content {
+              margin-top: 145px; /* Adjust this based on your header height */
+              padding: 20px;
+              box-sizing: border-box;
+            }
+
+          #body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+        </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>Brandon Luton</h1>
+      
+        <hr>
+        <ul id="navbar">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pages/cs.html">CS Projects</a></li>
+          <li><a href="/pages/gis.html">GIS Projects</a></li>
+          <li><a href="/pages/resume.html">Resume</a></li>
+        </ul>
+        <hr>
+      </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const base = "".replace(/\/$/, ""); // remove trailing slash if present
+              const path = window.location.pathname.replace(base, "").replace(/\/$/, "").toLowerCase(); // normalize
+          
+              document.querySelectorAll("#navbar a").forEach(link => {
+                const href = link.getAttribute("href").replace(base, "").replace(/\/$/, "").toLowerCase();
+                if (path === href) {
+                  link.classList.add("active");
+                }
+              });
+            });
+          </script>
+    </body>
+  <main>
+    <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
+<style>
+
+
+  .sidebar {
+    position: fixed;
+    top: 170px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 200px); /* full height of the viewport */
+    background-color: #222; /*#136a13 */
+    color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  .sidebar a:hover {
+    background-color: #2980b9;
+  }
+
+  .content {
+    margin-left: 200px; /* same as sidebar width */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+</style>
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#intro">Introduction</a>
+  <a href="#shift">Shift Cipher</a>
+  <a href="#vigenere">Vigenere Cipher</a>
+  <a href="#substitution">Substitution Cipher</a>
+  <a href="#affine">Affine Cipher</a>
+</div>
+
+<div class="content">
+  <div id="intro">
+    <h1>Introduction</h1>
+    <p>
+      Implementation of various ciphers in Python that were covered in an Undergrad Cryptography class.
+      Shift Ciphers, Vigenere Ciphers, Substitution Ciphers, and Affine Ciphers are implemented. Note:
+      the assumption is that messages are using a standard English alphabet.
+      <br><br><b>Tools:</b> Python, numpy
+      <br><a href="https://github.com/Brandon-8/cryptography" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </p>
+  <div id="shift">
+    <h1>Shift Cipher</h1>
+    <p>
+      A Shift Cipher is a basic cipher that shifts all letters in the message by certain value (called the key)
+      to a subsequent letter in the alphabet. The Caesar Cipher is the case where the key is 3.
+      <br><br>
+      In addition to basic functions to encrypt and decrpyt a given messages, using the key value, there are 
+      to methods to crack a Shift cipher when the key value is unknown. The first is a brute force approach where
+      every possible key (0-25 in the case of standard alphabet) is tested on the encrypted message. All the 
+      potential decrypted messages are compared to a U.S. dictionary to see how closely it aligns with the English language
+      The most likely candidates for the decrypted message are returned to the user. 
+      <br><br>
+      The code for this is shown below.
+    </p>
+    <pre><code>
+      def shift_crack_brute_force(self, ciphertext, valid_percent, one_result=False):
+              possible_decrpyt = [] # may be possible to get more than one potential plaintext
+              length = len(self.alphabet)
+              # Brute Force by checking every possible shift value
+              for ii in range(length):
+                  self.set_key(ii)
+                  poss = self.decrypt(ciphertext)
+
+                  if poss == None:
+                      return None
+                  
+                  # check if the decrypted text is english
+                  valid = check_text(poss)
+                  res = {'Plaintext': poss, 'Shift Value': ii, 'Valid': valid}
+                  if one_result and valid >= valid_percent:
+                      return res
+                  possible_decrpyt.append(res)  
+              
+              self.set_key(None)
+              return possible_decrpyt
+    </pre></code>
+    <p>
+      The second method to crack a Shift Cipher is by leveraging letter frequencies. The most common
+      letter in the English language is the letter 'e'. Knowing this, given an encrypted message that is 
+      sufficiently long, the most freqent letter in the encrypted message likely maps to the letter 'e' (or
+      another high frequency letter) and thus the key value can be determined.
+    </p>
+  </div>
+  <div id="vigenere">
+    <h1>Vigenere Cipher</h1>
+    <p>
+      Vigenere Cipher
+    </p>
+  </div>
+  <div id="substitution">
+  <h1>Substitution Cipher</h1>
+  <p>
+    Substitution Cipher
+  </p>
+  </div>
+  <div id="affine">
+  <h1>Affine Cipher</h1>
+  <p>
+    Affine Cipher
+  </p>
+  </div>
+
+</div>
+  </main>
