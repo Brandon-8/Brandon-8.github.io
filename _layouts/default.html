@@ -62,16 +62,19 @@
             .content {
               margin-top: 145px; /* Adjust this based on your header height */
               padding: 20px;
-              box-sizing: border-box;
             }
 
           #body {
     margin: 0;
     font-family: sans-serif;
+
   }
+  html {
+  scroll-padding-top: 165px; /* match or slightly exceed your header height */
+}
+
         </style>
     </head>
-    <body>
       <div class="header">
         <h1>Brandon Luton</h1>
       
@@ -98,7 +101,7 @@
               });
             });
           </script>
-    </body>
+
   <main>
     {{ content }}
   </main>

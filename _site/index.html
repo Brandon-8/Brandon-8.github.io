@@ -62,16 +62,19 @@
             .content {
               margin-top: 145px; /* Adjust this based on your header height */
               padding: 20px;
-              box-sizing: border-box;
             }
 
           #body {
     margin: 0;
     font-family: sans-serif;
+
   }
+  html {
+  scroll-padding-top: 165px; /* match or slightly exceed your header height */
+}
+
         </style>
     </head>
-    <body>
       <div class="header">
         <h1>Brandon Luton</h1>
       
@@ -98,23 +101,21 @@
               });
             });
           </script>
-    </body>
+
   <main>
     <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
 <style>
 
 
-  .sidebar {
-    position: fixed;
-    top: 170px;
-    left: 0;
-    width: 200px;
-    height: calc(100vh - 200px); /* full height of the viewport */
-    background-color: #222; /*#136a13 */
-    color: #fff;
-    box-sizing: border-box;
-    padding-top: 20px;
-  }
+.sidebar {
+  position: fixed;
+  top: 165px; /* leave space for header */
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #222;
+  padding-top: 20px;
+}
 
   .sidebar a {
     display: block;
@@ -170,10 +171,15 @@
     I am currently a Master's student at 
     <a href='https://www.vt.edu' target="_blank" rel="noopener noreferrer">Virginia Tech.</a>
     I recieved a B.S. in Computer Science from the 
-    <a href='https://www.vt.edu' target="_blank" rel="noopener noreferrer">University of Maryland, Baltimore County (UMBC)</a>
-    <br>Write some stuff here
+    <a href='https://umbc.edu' target="_blank" rel="noopener noreferrer">University of Maryland, Baltimore County (UMBC)</a>
+    <br><br>My research interests involve applying data science and machine learning methods to urban and spatial 
+    problems. Projects that involve large-scale data analysis, predictive modeling, or geospatial 
+    analytics are of particular interest. Topics such as modeling traffic patterns or urban growth, 
+    remote sensing/image processing, and smart city technologies are my main focus areas at the moment.
+
 </p>
 </div>
+	<embed src="/assets/pdfs/spanish_classifier.pdf" type="application/pdf" width="1px" height="1px" style="visibility: hidden">
 
 
   </main>

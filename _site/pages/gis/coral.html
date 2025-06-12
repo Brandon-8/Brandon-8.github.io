@@ -62,16 +62,19 @@
             .content {
               margin-top: 145px; /* Adjust this based on your header height */
               padding: 20px;
-              box-sizing: border-box;
             }
 
           #body {
     margin: 0;
     font-family: sans-serif;
+
   }
+  html {
+  scroll-padding-top: 165px; /* match or slightly exceed your header height */
+}
+
         </style>
     </head>
-    <body>
       <div class="header">
         <h1>Brandon Luton</h1>
       
@@ -98,23 +101,21 @@
               });
             });
           </script>
-    </body>
+
   <main>
     <!--https://www.geeksforgeeks.org/web-templates/create-a-fixed-sidebar-using-html-and-css/-->
 <style>
 
 
-  .sidebar {
-    position: fixed;
-    top: 170px;
-    left: 0;
-    width: 200px;
-    height: calc(100vh - 200px); /* full height of the viewport */
-    background-color: #222; /*#136a13 */
-    color: #fff;
-    box-sizing: border-box;
-    padding-top: 20px;
-  }
+.sidebar {
+  position: fixed;
+  top: 165px; /* leave space for header */
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #222;
+  padding-top: 20px;
+}
 
   .sidebar a {
     display: block;
@@ -143,5 +144,6 @@
     <h1>Restoration of Cold-water Coral along the European Continental Shelf Maps</h1>
     <img id='sites' src="../../assets/maps/map 1_candidate_sites.png" alt="Candidate Sites for Coral Restoration" style="max-width: 100%; height: auto;"/>
     <img id='voyage' src="../../assets/maps/map 2_voyage.png" alt="Survey Voyage Route" style="max-width: 100%; height: auto;"/>
-</div>
+	<embed src="/assets/pdfs/spanish_classifier.pdf" type="application/pdf" width="1px" height="1px" style="visibility: hidden">
+  </div>
   </main>
